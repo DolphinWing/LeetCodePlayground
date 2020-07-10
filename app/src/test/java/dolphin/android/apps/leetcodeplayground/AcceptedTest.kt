@@ -110,4 +110,70 @@ class AcceptedTest {
     fun `Check If Array Pairs Are Divisible by k - 5`() {
         Assert.assertEquals(true, solution.canArrange(intArrayOf(-1, 1, -2, 2, -3, 3, -4, 4), 3))
     }
+
+    @Test
+    fun `tic tac toe case 1`() {
+        // [[0,0],[2,0],[1,1],[2,1],[2,2]]
+        Assert.assertEquals(
+            "A", solution.tictactoe(
+                arrayOf(
+                    intArrayOf(0, 0),
+                    intArrayOf(2, 0),
+                    intArrayOf(1, 1),
+                    intArrayOf(2, 1),
+                    intArrayOf(2, 2)
+                )
+            )
+        )
+    }
+
+    @Test
+    fun `tic tac toe case 2`() {
+        // [[0,0],[1,1],[0,1],[0,2],[1,0],[2,0]]
+        Assert.assertEquals(
+            "B", solution.tictactoe(
+                arrayOf(
+                    intArrayOf(0, 0),
+                    intArrayOf(1, 1),
+                    intArrayOf(0, 1),
+                    intArrayOf(0, 2),
+                    intArrayOf(1, 0),
+                    intArrayOf(2, 0)
+                )
+            )
+        )
+    }
+
+    @Test
+    fun `tic tac toe case 3`() {
+        // [[0,0],[1,1],[2,0],[1,0],[1,2],[2,1],[0,1],[0,2],[2,2]]
+        Assert.assertEquals(
+            "Draw", solution.tictactoe(
+                arrayOf(
+                    intArrayOf(0, 0),
+                    intArrayOf(1, 1),
+                    intArrayOf(2, 0),
+                    intArrayOf(1, 0),
+                    intArrayOf(1, 2),
+                    intArrayOf(2, 1),
+                    intArrayOf(0, 1),
+                    intArrayOf(0, 2),
+                    intArrayOf(2, 2)
+                )
+            )
+        )
+    }
+
+    @Test
+    fun `tic tac toe case 4`() {
+        // [[0,0],[1,1]]
+        Assert.assertEquals(
+            "Pending", solution.tictactoe(
+                arrayOf(
+                    intArrayOf(0, 0),
+                    intArrayOf(1, 1)
+                )
+            )
+        )
+    }
 }

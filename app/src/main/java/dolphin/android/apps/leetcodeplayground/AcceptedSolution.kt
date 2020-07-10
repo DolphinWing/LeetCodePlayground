@@ -135,4 +135,44 @@ open class AcceptedSolution {
         }
         return false
     }
+
+    /**
+     * https://leetcode.com/problems/find-winner-on-a-tic-tac-toe-game/
+     *
+     * Given an array moves where each element is another array of size 2 corresponding to the row
+     * and column of the grid where they mark their respective character in the order in which A
+     * and B play.
+     *
+     * Return the winner of the game if it exists (A or B), in case the game ends in a draw return
+     * "Draw", if there are still movements to play return "Pending".
+     *
+     * You can assume that moves is valid (It follows the rules of Tic-Tac-Toe), the grid is
+     * initially empty and A will play first.
+     *
+     * @param moves mark of moves in the order in which A and B play.
+     * @return the winner of the game ("A" or "B"), "Draw" or "Pending"
+     */
+    fun tictactoe(moves: Array<IntArray>): String {
+        val result = Array(9) { "" }
+        moves.forEachIndexed { index, move ->
+            result[move[0] * 3 + move[1]] = if (index % 2 == 0) "A" else "B"
+        }
+        if (result[0] == result[1] && result[1] == result[2] && result[2].isNotEmpty())
+            return result[1] // A or B
+        if (result[3] == result[4] && result[4] == result[5] && result[5].isNotEmpty())
+            return result[4] // A or B
+        if (result[6] == result[7] && result[7] == result[8] && result[8].isNotEmpty())
+            return result[7] // A or B
+        if (result[0] == result[3] && result[3] == result[6] && result[6].isNotEmpty())
+            return result[3] // A or B
+        if (result[1] == result[4] && result[4] == result[7] && result[7].isNotEmpty())
+            return result[4] // A or B
+        if (result[2] == result[5] && result[5] == result[8] && result[8].isNotEmpty())
+            return result[5] // A or B
+        if (result[0] == result[4] && result[4] == result[8] && result[8].isNotEmpty())
+            return result[4] // A or B
+        if (result[2] == result[4] && result[4] == result[6] && result[6].isNotEmpty())
+            return result[4] // A or B
+        return if (result.any { it.isEmpty() }) "Pending" else "Draw"
+    }
 }

@@ -1,6 +1,9 @@
 package dolphin.android.apps.leetcodeplayground
 
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Before
+import org.junit.Test
 
 // @Config(sdk = [Build.VERSION_CODES.P])
 // @RunWith(AndroidJUnit4::class)
@@ -12,7 +15,9 @@ class LeetCodeTest {
         solution = Solution()
     }
 
+    @Test
     fun wip() {
-        // TODO add some work in progress code here
+        assertTrue(true)
+        assertEquals(3 + 4, 4 + 3)
     }
 }
