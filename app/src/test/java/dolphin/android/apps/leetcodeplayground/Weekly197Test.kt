@@ -104,6 +104,7 @@ class Weekly197Test {
     @Test
     fun `Best Position for a Service Centre - 4`() {
         // positions = [1,1],[0,0],[2,0]
+        // center = [1.0, 0.5773502711]
         assertEquals(
             2.73205, solution.getMinDistSum(
                 arrayOf(
@@ -116,6 +117,7 @@ class Weekly197Test {
     @Test
     fun `Best Position for a Service Centre - 5`() {
         // positions = [[0,1],[3,2],[4,5],[7,6],[8,9],[11,1],[2,12]]
+        // center = [4.3460852395, 4.9813795505]
         assertEquals(
             32.94036, solution.getMinDistSum(
                 arrayOf(

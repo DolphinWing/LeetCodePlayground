@@ -92,45 +92,41 @@ class Weekly197Solution {
         // Log.d(TAG, "x max=${x.last()} min=${x.first()}")
         val y = IntArray(positions.size) { positions[it][1] }.apply { sort() }
         // Log.d(TAG, "y max=${y.last()} min=${y.first()}")
-        val map = Array(3000000) { 0.0 }
+        var min = 10000.0 // Double.MAX_VALUE
+        var keyX = 0.0
+        var keyY = 0.0
         for (i in x.first()..x.last()) {
             for (j in y.first()..y.last()) {
-                map[i * 100 + j] =
+                val value =
                     distToAll(positions = positions, center = Pair(i.toDouble(), j.toDouble()))
-                // Log.d(TAG, "[$i,$j] = ${map[i * 100 + j]}")
-            }
-        }
-        var min = 10000.0 // Double.MAX_VALUE
-        var keyX = 0
-        var keyY = 0
-        map.forEachIndexed { key, value ->
-            //Log.d(TAG, "$key = $value")
-            if (min > value && value > 0) {
-                min = value
-                keyX = key / 100
-                keyY = key % 100
+                if (min > value) {
+                    min = value
+                    keyX = i.toDouble()
+                    keyY = j.toDouble()
+                }
             }
         }
         // Log.d(TAG, "min = $min around key = (${keyX}, $keyY)")
-
-        // map.forEach { it  0.0 } // find surrounding min
-        val times = 1000
-        repeat(2 * times) { i ->
-            val px: Double = ((i - times).toDouble() / times) + keyX
-            repeat(times * 2) { j ->
-                val py: Double = ((j - times).toDouble() / times) + keyY
-                map[i * times + j] = distToAll(positions = positions, center = Pair(px, py))
-                // Log.d(TAG, "[$px,$py] = ${map[i * times + j]}")
+        var step = 1.0 / 2
+        repeat(10) {
+            var keyXX: Double = keyX
+            var keyYY: Double = keyY
+            for (i in intArrayOf(-1, 0, 1)) {
+                val px = keyX + step * i
+                for (j in intArrayOf(-1, 0, 1)) {
+                    val py = keyY + step * j
+                    val value = distToAll(positions = positions, center = Pair(px, py))
+                    if (min > value) {
+                        min = value
+                        keyXX = px
+                        keyYY = py
+                    }
+                }
             }
-        }
-        var keyXX: Double = keyX.toDouble()
-        var keyYY: Double = keyY.toDouble()
-        map.forEachIndexed { key, value ->
-            if (min > value && value > 0) {
-                min = value
-                keyXX = (key - times).toDouble() / times + keyX
-                keyYY = (key - times).toDouble() % times + keyY
-            }
+            Log.d(TAG, "key = (${keyXX}, $keyYY), min=$min")
+            step /= 2
+            keyX = keyXX
+            keyY = keyYY
         }
         // Log.d(TAG, "key = (${keyXX}, $keyYY), min=$min")
         return min
