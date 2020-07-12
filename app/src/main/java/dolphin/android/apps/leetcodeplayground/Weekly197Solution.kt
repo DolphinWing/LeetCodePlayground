@@ -1,6 +1,5 @@
 package dolphin.android.apps.leetcodeplayground
 
-import android.util.Log
 import kotlin.math.sqrt
 
 /**
@@ -14,8 +13,8 @@ class Weekly197Solution {
     }
 
     fun wip(): Boolean {
-        Log.d(TAG, "Here's the work in progress codes")
-        return true
+        // Log.d(TAG, "Here's the work in progress codes")
+        return false // all 3 ans are accepted
     }
 
     /**
@@ -50,25 +49,23 @@ class Weekly197Solution {
      * @return the number of substrings
      */
     fun numSub(s: String): Int {
-        var result = 0
+        var result: Long = 0
         var p = 0
         val list = Array(20000) { 0 } // 1 <= s.length <= 10^5
         var i = 0
         s.forEach { c ->
-            if (c == '0') {
-                if (p > 0) {
-                    list[i++] = p
-                    p = 0
-                } // else ignore them
-            } else { // c == '1'
+            if (c == '1') {
                 p++
-            }
+            } else if (c == '0' && p > 0) {
+                list[i++] = p
+                p = 0
+            } // else ignore them
         }
         if (p > 0) list[i] = p // for last continuous string
         list.forEach { c ->
-            result += c * (c + 1) / 2
+            result += c.toLong() * (c + 1) / 2 // make sure not overflow
         }
-        return result
+        return (result % 1000000007L).toInt()
     }
 
     /**
@@ -123,7 +120,7 @@ class Weekly197Solution {
                     }
                 }
             }
-            Log.d(TAG, "key = (${keyXX}, $keyYY), min=$min")
+            // Log.d(TAG, "key = (${keyXX}, $keyYY), min=$min")
             step /= 2
             keyX = keyXX
             keyY = keyYY
