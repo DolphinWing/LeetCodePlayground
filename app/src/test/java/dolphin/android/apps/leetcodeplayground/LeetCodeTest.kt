@@ -17,7 +17,7 @@ class LeetCodeTest {
 
     @Test
     fun wip() {
-        assertTrue(true)
+        assertTrue(solution.wip())
         assertEquals(3 + 4, 4 + 3)
     }
 }

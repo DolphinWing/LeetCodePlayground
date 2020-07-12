@@ -23,8 +23,18 @@ class MainActivity : AppCompatActivity() {
                 Column() {
                     Greeting("Android")
                     Button(onClick = {
-                        val result = Solution().canArrange(intArrayOf(1, 2, 3, 4, 5, 6), 10)
-                        Log.d(TAG, "result = $result")
+                        val result = Weekly197Solution().getMinDistSum(
+                            arrayOf(
+                                intArrayOf(0, 1),
+                                intArrayOf(3, 2),
+                                intArrayOf(4, 5),
+                                intArrayOf(7, 6),
+                                intArrayOf(8, 9),
+                                intArrayOf(11, 1),
+                                intArrayOf(2, 12)
+                            )
+                        )
+                        Log.d(TAG, ">> result = $result")
                     }) {
                         Text("LeetCode")
                     }

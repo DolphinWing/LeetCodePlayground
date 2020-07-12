@@ -1,8 +1,11 @@
 package dolphin.android.apps.leetcodeplayground
 
+import android.util.Log
 import kotlin.math.absoluteValue
 
 open class AcceptedSolution {
+    open fun wip(): Boolean = false
+
     /**
      * https://leetcode.com/problems/two-sum/
      *

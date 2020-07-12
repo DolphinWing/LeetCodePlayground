@@ -7,7 +7,8 @@ class Solution : AcceptedSolution() {
         private const val TAG = "LeetCode"
     }
 
-    fun wip() {
+    override fun wip(): Boolean {
         Log.d(TAG, "Here's the work in progress codes")
+        return true
     }
 }
