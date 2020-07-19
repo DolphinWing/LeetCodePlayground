@@ -1,6 +1,9 @@
 package dolphin.android.apps.leetcodeplayground
 
 import java.util.ArrayDeque
+import kotlin.collections.HashMap
+import kotlin.collections.set
+import kotlin.math.abs
 import kotlin.math.absoluteValue
 
 open class AcceptedSolution {
@@ -204,5 +207,37 @@ open class AcceptedSolution {
             }
         }
         return stack.isEmpty() // not pair clean
+    }
+
+    /**
+     * https://leetcode.com/contest/weekly-contest-198/problems/find-a-value-of-a-mysterious-function-closest-to-target/
+     * https://leetcode.com/problems/find-a-value-of-a-mysterious-function-closest-to-target/submissions/
+     *
+     * Find a Value of a Mysterious Function Closest to Target
+     *
+     * Return the minimum possible value of |func(arr, l, r) - target|.
+     *
+     * 1 <= arr.length <= 10^5, 1 <= arr[ i ] <= 10^6, 0 <= target <= 10^7
+     *
+     * @param arr integer array for Winston's mysterious function
+     * @param target an integer target for Winston's mysterious function
+     * @return minimum possible value of |func(arr, l, r) - target|
+     */
+    fun closestToTarget(arr: IntArray, target: Int): Int {
+        val dist = arr.distinct()
+        if (dist.size == 1) { // all the same, only can return the same value
+            return abs(dist.first() - target)
+        } else if (target > 0) {
+            val array = Array(dist.size) { i ->
+                var ans = dist[i]
+                val a = Array(dist.size - i) { j ->
+                    ans = ans and dist[i + j]
+                    abs(ans - target)
+                }
+                a.sortedArray().first()
+            }
+            return array.sortedArray().first()
+        }
+        return 0
     }
 }
