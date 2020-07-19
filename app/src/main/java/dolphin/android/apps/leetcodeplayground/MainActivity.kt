@@ -23,17 +23,7 @@ class MainActivity : AppCompatActivity() {
                 Column() {
                     Greeting("Android")
                     Button(onClick = {
-                        val result = Weekly197Solution().getMinDistSum(
-                            arrayOf(
-                                intArrayOf(0, 1),
-                                intArrayOf(3, 2),
-                                intArrayOf(4, 5),
-                                intArrayOf(7, 6),
-                                intArrayOf(8, 9),
-                                intArrayOf(11, 1),
-                                intArrayOf(2, 12)
-                            )
-                        )
+                        val result = Solution().closestToTarget(intArrayOf(9, 12, 3, 7, 15), 5)
                         Log.d(TAG, ">> result = $result")
                     }) {
                         Text("LeetCode")
