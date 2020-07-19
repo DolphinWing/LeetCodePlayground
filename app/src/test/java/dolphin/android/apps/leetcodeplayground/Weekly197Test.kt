@@ -16,8 +16,8 @@ class Weekly197Test {
     }
 
     @Test
-    fun wip() {
-        assertTrue(!solution.wip())
+    fun accepted() {
+        assertTrue(solution.accepted())
         assertEquals(3 + 4, 4 + 3)
     }
 

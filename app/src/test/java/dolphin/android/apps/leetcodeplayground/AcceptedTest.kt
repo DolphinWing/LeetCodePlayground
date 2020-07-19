@@ -176,4 +176,49 @@ class AcceptedTest {
             )
         )
     }
+
+    @Test
+    fun `Valid Parentheses 1`() {
+        Assert.assertEquals(true, solution.isValid("()"))
+    }
+
+    @Test
+    fun `Valid Parentheses 2`() {
+        Assert.assertEquals(true, solution.isValid("()[]{}"))
+    }
+
+    @Test
+    fun `Valid Parentheses 3`() {
+        Assert.assertEquals(false, solution.isValid("(]"))
+    }
+
+    @Test
+    fun `Valid Parentheses 4`() {
+        Assert.assertEquals(false, solution.isValid("([)]"))
+    }
+
+    @Test
+    fun `Valid Parentheses 5`() {
+        Assert.assertEquals(true, solution.isValid("{[]}"))
+    }
+
+    @Test
+    fun `Valid Parentheses 6`() {
+        Assert.assertEquals(false, solution.isValid("))"))
+    }
+
+    @Test
+    fun `Valid Parentheses 7`() {
+        Assert.assertEquals(false, solution.isValid("]"))
+    }
+
+    @Test
+    fun `Valid Parentheses 8`() {
+        Assert.assertEquals(false, solution.isValid("["))
+    }
+
+    @Test
+    fun `Valid Parentheses 9`() {
+        Assert.assertEquals(false, solution.isValid("\"){\""))
+    }
 }

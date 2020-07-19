@@ -1,6 +1,6 @@
 package dolphin.android.apps.leetcodeplayground
 
-import android.util.Log
+import java.util.ArrayDeque
 import kotlin.math.absoluteValue
 
 open class AcceptedSolution {
@@ -177,5 +177,32 @@ open class AcceptedSolution {
         if (result[2] == result[4] && result[4] == result[6] && result[6].isNotEmpty())
             return result[4] // A or B
         return if (result.any { it.isEmpty() }) "Pending" else "Draw"
+    }
+
+    /**
+     * https://leetcode.com/problems/valid-parentheses/
+     *
+     * Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if
+     * the input string is valid.
+     *
+     * An input string is valid if:
+     * * Open brackets must be closed by the same type of brackets.
+     * * Open brackets must be closed in the correct order.
+     *
+     * @param s input string
+     * @return true if the input string is valid
+     */
+    fun isValid(s: String): Boolean {
+        if (s.length % 2 != 0) return false // impossible to be pair
+        val stack = ArrayDeque<Char>()
+        s.forEach { c ->
+            when (c) {
+                '(', '[', '{' -> stack.push(c)
+                ')' -> if (stack.isEmpty() || stack.pop() != '(') return false
+                ']' -> if (stack.isEmpty() || stack.pop() != '[') return false
+                '}' -> if (stack.isEmpty() || stack.pop() != '{') return false
+            }
+        }
+        return stack.isEmpty() // not pair clean
     }
 }

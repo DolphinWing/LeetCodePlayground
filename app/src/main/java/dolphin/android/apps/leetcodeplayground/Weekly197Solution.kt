@@ -12,9 +12,9 @@ class Weekly197Solution {
         private const val TAG = "LeetCode"
     }
 
-    fun wip(): Boolean {
+    fun accepted(): Boolean {
         // Log.d(TAG, "Here's the work in progress codes")
-        return false // all 3 ans are accepted
+        return true // all 3 ans are accepted
     }
 
     /**
