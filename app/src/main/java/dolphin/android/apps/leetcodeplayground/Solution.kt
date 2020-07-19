@@ -11,6 +11,4 @@ class Solution : AcceptedSolution() {
         Log.d(TAG, "Here's the work in progress codes")
         return true
     }
-
-
 }
