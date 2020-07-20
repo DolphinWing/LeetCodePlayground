@@ -208,4 +208,29 @@ open class AcceptedSolution {
         }
         return stack.isEmpty() // not pair clean
     }
+
+    /**
+     * https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+     *
+     * Given a sorted array nums, remove the duplicates in-place such that each element appear only
+     * once and return the new length.
+     *
+     * Do not allocate extra space for another array, you must do this by modifying the input array
+     * in-place with O(1) extra memory.
+     *
+     * @param nums a sorted array
+     * @return the new length of each element appear only once
+     */
+    fun removeDuplicates(nums: IntArray): Int {
+        if (nums.size > 1) {
+            var p = 0 // make current pointer to start position
+            for (j in 1..nums.lastIndex) { // start from 1 to lastIndex
+                if (nums[p] != nums[j]) { // process the different value
+                    nums[++p] = nums[j] // put the value in new place
+                } // else ignore it
+            }
+            return p + 1
+        }
+        return nums.size
+    }
 }

@@ -221,4 +221,35 @@ class AcceptedTest {
     fun `Valid Parentheses 9`() {
         Assert.assertEquals(false, solution.isValid("\"){\""))
     }
+
+    @Test
+    fun `Remove Duplicates from Sorted Array 1`() {
+        val array = intArrayOf(1, 1, 2)
+        Assert.assertEquals(2, solution.removeDuplicates(array))
+        Assert.assertEquals(1, array[0])
+        Assert.assertEquals(2, array[1])
+    }
+
+    @Test
+    fun `Remove Duplicates from Sorted Array 2`() {
+        val array = intArrayOf(0, 0, 1, 1, 1, 2, 2, 3, 3, 4)
+        Assert.assertEquals(5, solution.removeDuplicates(array))
+        Assert.assertEquals(0, array[0])
+        Assert.assertEquals(1, array[1])
+        Assert.assertEquals(2, array[2])
+        Assert.assertEquals(3, array[3])
+        Assert.assertEquals(4, array[4])
+    }
+
+    @Test
+    fun `Remove Duplicates from Sorted Array 3`() {
+        val array = intArrayOf(77)
+        Assert.assertEquals(1, solution.removeDuplicates(array))
+    }
+
+    @Test
+    fun `Remove Duplicates from Sorted Array 4`() {
+        val array = intArrayOf()
+        Assert.assertEquals(0, solution.removeDuplicates(array))
+    }
 }
