@@ -102,4 +102,10 @@ class LeetCodeTest {
             }
         }
     }
+
+    @Test
+    fun `Merge Two Sorted Lists 4`() {
+        val result = solution.mergeTwoLists(null, null)
+        assertNull(result)
+    }
 }

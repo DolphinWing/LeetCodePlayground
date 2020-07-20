@@ -20,6 +20,8 @@ class Solution : AcceptedSolution() {
      * https://leetcode.com/problems/merge-two-sorted-lists/
      */
     fun mergeTwoLists(l1: ListNode?, l2: ListNode?): ListNode? {
+        if (l1 == null) return l2
+        if (l2 == null) return l1
         val list = ArrayList<ListNode>()
         var next: ListNode? = l1
         while (next != null) { // add l1 to a list for sorting
